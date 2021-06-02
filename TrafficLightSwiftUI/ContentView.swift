@@ -52,7 +52,6 @@ struct ContentView: View {
                 greenLight
             }
             Spacer()
-            
             Button(action: { work() }) {
                 Text("\(buttonText)")
                     .font(.title)
