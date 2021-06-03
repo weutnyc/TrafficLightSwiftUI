@@ -13,19 +13,19 @@ struct ContentView: View {
     @State private var yellowLight = ColorCircle(color: .yellow, alpha: 0.3)
     @State private var greenLight = ColorCircle(color: .green, alpha: 0.3)
     
-    @State private var alphaPoints = alphaPoint.red
+    @State private var alphaPoints = AlphaPoint.red
     @State private var buttonText = "Start!"
     
     private let on: Double = 1
     private let off = 0.3
     
-    enum alphaPoint {
+    enum AlphaPoint {
         case red
         case yellow
         case green
     }
     
-    func work() {
+    private func work() {
         buttonText = "Next!"
         
         switch alphaPoints {
@@ -57,7 +57,7 @@ struct ContentView: View {
                     .font(.title)
                     .foregroundColor(.red)
             }
-            .padding(.bottom, +50)
+            .padding(.bottom, 50)
         }
     }
 }
