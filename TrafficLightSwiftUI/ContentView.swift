@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var redLight = ColorCircle(color: .red, alpha: 0.3)
-    @State private var yellowLight = ColorCircle(color: .yellow, alpha: 0.3)
-    @State private var greenLight = ColorCircle(color: .green, alpha: 0.3)
+    @State private var redLight = ColorCircle(color: .red, opacity: 0.3)
+    @State private var yellowLight = ColorCircle(color: .yellow, opacity: 0.3)
+    @State private var greenLight = ColorCircle(color: .green, opacity: 0.3)
     
     @State private var alphaPoints = AlphaPoint.red
     @State private var buttonText = "Start!"
@@ -30,16 +30,16 @@ struct ContentView: View {
         
         switch alphaPoints {
         case .red:
-            redLight.alpha = on
-            greenLight.alpha = off
+            redLight.opacity = on
+            greenLight.opacity = off
             alphaPoints = .yellow
         case .yellow:
-            yellowLight.alpha = on
-            redLight.alpha = off
+            yellowLight.opacity = on
+            redLight.opacity = off
             alphaPoints = .green
         case .green:
-            greenLight.alpha = on
-            yellowLight.alpha = off
+            greenLight.opacity = on
+            yellowLight.opacity = off
             alphaPoints = .red
         }
     }
