@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum AlphaPoint {
+    case red
+    case yellow
+    case green
+}
+
 struct ContentView: View {
     
     @State private var redLight = ColorCircle(color: .red, opacity: 0.3)
@@ -16,17 +22,17 @@ struct ContentView: View {
     @State private var alphaPoints = AlphaPoint.red
     @State private var buttonText = "Start!"
     
-    private let on: Double = 1
-    private let off = 0.3
+   
     
-    enum AlphaPoint {
-        case red
-        case yellow
-        case green
-    }
+   
     
     private func work() {
+        
+        
         buttonText = "Next!"
+        
+        let on: Double = 1
+        let off = 0.3
         
         switch alphaPoints {
         case .red:
@@ -52,7 +58,7 @@ struct ContentView: View {
                 greenLight
             }
             Spacer()
-            Button(action: { work() }) {
+            Button(action: work) {
                 Text("\(buttonText)")
                     .font(.title)
                     .foregroundColor(.red)
