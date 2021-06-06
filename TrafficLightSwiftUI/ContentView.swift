@@ -8,54 +8,32 @@
 import SwiftUI
 
 enum AlphaPoint {
-    case red
-    case yellow
-    case green
+    case red, yellow , green
 }
 
 struct ContentView: View {
     
-    @State private var redLight = ColorCircle(color: .red, opacity: 0.3)
-    @State private var yellowLight = ColorCircle(color: .yellow, opacity: 0.3)
-    @State private var greenLight = ColorCircle(color: .green, opacity: 0.3)
-    
     @State private var alphaPoints = AlphaPoint.red
     @State private var buttonText = "Start!"
     
-   
-    
-   
-    
     private func work() {
-        
-        
         buttonText = "Next!"
         
-        let on: Double = 1
-        let off = 0.3
-        
         switch alphaPoints {
-        case .red:
-            redLight.opacity = on
-            greenLight.opacity = off
-            alphaPoints = .yellow
-        case .yellow:
-            yellowLight.opacity = on
-            redLight.opacity = off
-            alphaPoints = .green
-        case .green:
-            greenLight.opacity = on
-            yellowLight.opacity = off
-            alphaPoints = .red
+        case .red: alphaPoints = .yellow
+        case .yellow: alphaPoints = .green
+        case .green: alphaPoints = .red
         }
     }
-    
+}
+
+extension ContentView {
     var body: some View {
         VStack {
             VStack {
-                redLight
-                yellowLight
-                greenLight
+                ColorCircle(color: .red, opacity: alphaPoints == .red ? 1 : 0.3)
+                ColorCircle(color: .yellow, opacity: alphaPoints == .yellow ? 1 : 0.3)
+                ColorCircle(color: .green, opacity: alphaPoints == .green ? 1 : 0.3)
             }
             Spacer()
             Button(action: work) {
